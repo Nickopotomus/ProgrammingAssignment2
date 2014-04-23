@@ -1,7 +1,10 @@
-## Put comments here that give an overall description of what your
-## functions do
+## makeCacheMatrix creates a "family" of matrix functions specific to matrix x
+## that are then used by cacheSolve to return x-inverse from cached memory (if present)
+## or via solve().
 
-## Write a short comment describing this function
+
+## makeCacheMatrix receives matrix variable x and creates a list with function
+## members set, get, setInverse, & getInverse
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -18,7 +21,11 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## cacheSolve recieves makeCacheMatrix variable x, checks to see if inverse
+## already exists in memory.  Returns inverse if it exists; computes inverse
+## otherwise
+##
+## Assumption: Passed matrix is square and inverse exists
 
 cacheSolve <- function(x, ...) {
   m <- x$getInverse()
